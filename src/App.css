@@ -1,38 +1,185 @@
+/* CSS Custom Properties for dynamic viewport */
+:root {
+  --vh: 1vh;
+  --grid-color: rgba(255, 255, 255, 0.1);
+  --background-color: #0a0a0a;
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --accent-color: #8b5cf6;
+  --button-gradient: linear-gradient(135deg, #8b5cf6, #a855f7);
+}
+
 .App {
-  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 0;
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+  -webkit-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+  
+  /* Dark grid background */
+  background-color: var(--background-color);
+  background-image: 
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: 0 0, 0 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.fullscreen-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(139, 92, 246, 0.2);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.fullscreen-btn:hover {
+  background: rgba(139, 92, 246, 0.3);
+  transform: scale(1.05);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.content-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 60px 40px 40px;
+  box-sizing: border-box;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.text-section {
+  text-align: left;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.main-title {
+  font-size: clamp(36px, 8vw, 48px);
+  font-weight: 600;
+  font-family: 'ClashDisplay-Semibold', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  color: var(--text-primary);
+  line-height: 1.1;
+  margin: 0 0 20px 0;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-size: clamp(16px, 4vw, 18px);
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+  font-weight: 400;
+}
+
+.image-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 100%;
+  margin: 20px 0;
 }
 
-.App-link {
-  color: #61dafb;
+.main-illustration {
+  max-width: 100%;
+  max-height: 300px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 40px rgba(139, 92, 246, 0.2));
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.get-started-btn {
+  width: 100%;
+  padding: 18px 24px;
+  background: white;
+  border: none;
+  border-radius: 38px;
+  color: black;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: 'Clash Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 32px rgba(139, 92, 246, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.get-started-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(139, 92, 246, 0.4);
+}
+
+.get-started-btn:active {
+  transform: translateY(0);
+}
+
+/* Mobile optimizations */
+@media screen and (max-width: 768px) {
+  .App {
+    height: 100vh;
+    height: 100dvh;
+    height: -webkit-fill-available;
+    min-height: 100vh;
+    min-height: 100dvh;
+    min-height: -webkit-fill-available;
+    background-size: 30px 30px;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .content-container {
+    padding: 50px 30px 30px;
+  }
+  
+  .fullscreen-btn {
+    top: 15px;
+    right: 15px;
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .content-container {
+    padding: 40px 20px 20px;
+  }
+  
+  .App {
+    background-size: 25px 25px;
+  }
+}
+
+/* Mobile fullscreen support */
+@supports (height: 100dvh) {
+  .App {
+    height: 100dvh;
+    min-height: 100dvh;
+  }
+}
+
+/* iOS Safari address bar handling */
+@supports (-webkit-touch-callout: none) {
+  .App {
+    height: -webkit-fill-available;
+    min-height: -webkit-fill-available;
   }
 }

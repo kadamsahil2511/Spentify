@@ -1,0 +1,184 @@
+/* Bank Linking Page Styles */
+.bank-linking-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+.bank-linking-content {
+  width: 100%;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.header-section {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.bank-linking-title {
+  font-size: clamp(36px, 8vw, 48px);
+  font-weight: 600;
+  font-family: 'ClashDisplay-SemiBold', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  color: var(--text-primary);
+  line-height: 1.1;
+  margin: 0 0 20px 0;
+  letter-spacing: -0.02em;
+  text-align: left;
+}
+
+.bank-linking-subtitle {
+  font-size: clamp(16px, 4vw, 18px);
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+  font-weight: 400;
+  font-family: 'ClashDisplay-SemiBold', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  text-align: left;
+}
+
+.bank-selection-section {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.selection-title {
+  font-size: clamp(28px, 6vw, 36px);
+  font-weight: 600;
+  font-family: 'ClashDisplay-SemiBold', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  color: var(--text-primary);
+  margin: 0 0 30px 0;
+  letter-spacing: -0.02em;
+  text-align: left;
+}
+
+.bank-options {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.bank-option {
+  width: 100%;
+  padding: 18px 24px;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 38px;
+  color: var(--text-primary);
+  font-size: 16px;
+  font-weight: 500;
+  font-family: 'ClashDisplay-SemiBold', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+  outline: none;
+}
+
+.bank-option:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-1px);
+}
+
+.bank-option.selected {
+  border-color: var(--accent-color);
+  background: rgba(139, 92, 246, 0.1);
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.2);
+}
+
+.bank-option:active {
+  transform: translateY(0);
+}
+
+.proceed-btn {
+  width: 100%;
+  padding: 18px 24px;
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  border-radius: 38px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 18px;
+  font-weight: 600;
+  font-family: 'ClashDisplay-SemiBold', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  cursor: not-allowed;
+  transition: all 0.3s ease;
+  margin-top: auto;
+}
+
+.proceed-btn.active {
+  background: white;
+  color: black;
+  cursor: pointer;
+  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.1);
+}
+
+.proceed-btn.active:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(255, 255, 255, 0.2);
+}
+
+.proceed-btn.active:active {
+  transform: translateY(0);
+}
+
+/* Mobile optimizations */
+@media screen and (max-width: 480px) {
+  .bank-linking-container {
+    padding: 30px 15px;
+  }
+  
+  .bank-linking-content {
+    max-width: 100%;
+  }
+  
+  .header-section {
+    margin-bottom: 30px;
+  }
+  
+  .bank-selection-section {
+    margin: 15px 0;
+  }
+  
+  .selection-title {
+    margin-bottom: 20px;
+  }
+  
+  .bank-options {
+    gap: 12px;
+  }
+  
+  .bank-option {
+    padding: 16px 20px;
+    font-size: 15px;
+  }
+  
+  .proceed-btn {
+    padding: 16px 20px;
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .bank-option {
+    padding: 14px 18px;
+    font-size: 14px;
+  }
+  
+  .bank-options {
+    gap: 10px;
+  }
+}
