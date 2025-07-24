@@ -1,7 +1,7 @@
 import './BankLinking.css';
 import { useState } from 'react';
 
-function BankLinking({ onBack }) {
+function BankLinking({ onBack, onProceed }) {
   const [selectedBank, setSelectedBank] = useState('');
 
   const banks = [
@@ -15,9 +15,9 @@ function BankLinking({ onBack }) {
   };
 
   const handleProceed = () => {
-    if (selectedBank) {
+    if (selectedBank && onProceed) {
       console.log('Selected bank:', selectedBank);
-      // Add bank linking logic here
+      onProceed();
     }
   };
 

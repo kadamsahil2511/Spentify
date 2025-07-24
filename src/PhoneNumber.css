@@ -1,0 +1,196 @@
+/* Phone Number Page Styles */
+.phone-number-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+.phone-number-content {
+  width: 100%;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.header-section {
+  width: 100%;
+  margin-bottom: 60px;
+}
+
+.phone-number-title {
+  font-size: clamp(36px, 8vw, 48px);
+  font-weight: 600;
+  font-family: 'Clash Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  color: var(--text-primary);
+  line-height: 1.1;
+  margin: 0 0 20px 0;
+  letter-spacing: -0.02em;
+  text-align: left;
+}
+
+.phone-number-subtitle {
+  font-size: clamp(16px, 4vw, 18px);
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+  font-weight: 400;
+  font-family: 'Clash Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  text-align: left;
+}
+
+.phone-input-section {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.input-label {
+  font-size: clamp(28px, 6vw, 36px);
+  font-weight: 600;
+  font-family: 'Clash Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  color: var(--text-primary);
+  margin: 0 0 40px 0;
+  letter-spacing: -0.02em;
+  text-align: left;
+}
+
+.phone-input-container {
+  display: flex;
+  align-items: center;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 38px;
+  padding: 4px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.phone-input-container:focus-within {
+  border-color: var(--accent-color);
+  background: rgba(139, 92, 246, 0.05);
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.1);
+}
+
+.country-code {
+  padding: 14px 20px;
+  color: var(--text-primary);
+  font-size: 16px;
+  font-weight: 500;
+  font-family: 'Clash Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 34px;
+  margin-right: 4px;
+  flex-shrink: 0;
+  min-width: 60px;
+  text-align: center;
+}
+
+.phone-input {
+  flex: 1;
+  padding: 14px 20px;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-size: 16px;
+  font-weight: 400;
+  font-family: 'Clash Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.phone-input::placeholder {
+  color: var(--text-secondary);
+}
+
+.proceed-btn {
+  width: 100%;
+  padding: 18px 24px;
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  border-radius: 38px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 18px;
+  font-weight: 600;
+  font-family: 'Clash Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  cursor: not-allowed;
+  transition: all 0.3s ease;
+  margin-top: auto;
+}
+
+.proceed-btn.active {
+  background: white;
+  color: black;
+  cursor: pointer;
+  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.1);
+}
+
+.proceed-btn.active:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(255, 255, 255, 0.2);
+}
+
+.proceed-btn.active:active {
+  transform: translateY(0);
+}
+
+/* Mobile optimizations */
+@media screen and (max-width: 480px) {
+  .phone-number-container {
+    padding: 30px 15px;
+  }
+  
+  .phone-number-content {
+    max-width: 100%;
+  }
+  
+  .header-section {
+    margin-bottom: 40px;
+  }
+  
+  .phone-input-section {
+    margin: 30px 0;
+  }
+  
+  .input-label {
+    margin-bottom: 30px;
+  }
+  
+  .country-code {
+    padding: 12px 16px;
+    font-size: 15px;
+    min-width: 55px;
+  }
+  
+  .phone-input {
+    padding: 12px 16px;
+    font-size: 15px;
+  }
+  
+  .proceed-btn {
+    padding: 16px 20px;
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .country-code {
+    padding: 10px 14px;
+    font-size: 14px;
+    min-width: 50px;
+  }
+  
+  .phone-input {
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+}

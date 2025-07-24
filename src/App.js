@@ -1,12 +1,15 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import SignIn from './SignIn';
+import PhoneNumber from './PhoneNumber';
 import CreateAccount from './CreateAccount';
 import BankLinking from './BankLinking';
+import PaymentPage from './PaymentPage';
+import Dashboard from './Dashboard';
 
 function App() {
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [currentPage, setCurrentPage] = useState('welcome'); // 'welcome', 'signin', 'createaccount', 'banklinking'
+  const [currentPage, setCurrentPage] = useState('welcome'); // 'welcome', 'signin', 'phonenumber', 'createaccount', 'banklinking', 'payment', 'dashboard'
 
   useEffect(() => {
     // Aggressive mobile fullscreen setup
@@ -123,11 +126,19 @@ function App() {
   };
 
   const handleCreateAccount = () => {
-    setCurrentPage('createaccount');
+    setCurrentPage('phonenumber');
   };
 
   const handleBackToSignIn = () => {
     setCurrentPage('signin');
+  };
+
+  const handlePhoneProceed = () => {
+    setCurrentPage('createaccount');
+  };
+
+  const handleBackToPhoneNumber = () => {
+    setCurrentPage('phonenumber');
   };
 
   const handleOtpProceed = () => {
@@ -135,7 +146,15 @@ function App() {
   };
 
   const handleBackToCreateAccount = () => {
-    setCurrentPage('createaccount');
+    setCurrentPage('phonenumber');
+  };
+
+  const handleBankSelected = () => {
+    setCurrentPage('dashboard');
+  };
+
+  const handleBackToBankLinking = () => {
+    setCurrentPage('banklinking');
   };
 
   return (
@@ -184,15 +203,29 @@ function App() {
         />
       )}
 
+      {currentPage === 'phonenumber' && (
+        <PhoneNumber 
+          onBack={handleBackToSignIn} 
+          onProceed={handlePhoneProceed}
+        />
+      )}
+
       {currentPage === 'createaccount' && (
         <CreateAccount 
-          onBack={handleBackToSignIn} 
+          onBack={handleBackToPhoneNumber} 
           onProceed={handleOtpProceed}
         />
       )}
 
       {currentPage === 'banklinking' && (
-        <BankLinking onBack={handleBackToCreateAccount} />
+        <BankLinking 
+          onBack={handleBackToCreateAccount} 
+          onProceed={handleBankSelected}
+        />
+      )}
+
+      {currentPage === 'dashboard' && (
+        <Dashboard onBack={handleBackToBankLinking} />
       )}
     </div>
   );
