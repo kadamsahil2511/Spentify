@@ -12,12 +12,17 @@ import OtherPurchases from './OtherPurchases';
 import Miscellaneous from './Miscellaneous';
 import PayToContacts from './PayToContacts';
 import PaymentPage from './PaymentPage';
+import PaymentSuccess from './PaymentSuccess';
+import Analysis from './Analysis';
 import Dashboard from './Dashboard';
+import Rewards from './Rewards';
+import Profile from './Profile';
 
 function App() {
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [currentPage, setCurrentPage] = useState('welcome'); // 'welcome', 'signin', 'phonenumber', 'createaccount', 'banklinking', 'dashboard', 'foodexpenses', 'travelexpenses', 'subscriptions', 'mobilebills', 'otherpurchases', 'miscellaneous', 'paytocontacts', 'paymentpage'
+  const [currentPage, setCurrentPage] = useState('welcome'); // 'welcome', 'signin', 'phonenumber', 'createaccount', 'banklinking', 'dashboard', 'foodexpenses', 'travelexpenses', 'subscriptions', 'mobilebills', 'otherpurchases', 'miscellaneous', 'paytocontacts', 'paymentpage', 'paymentsuccess', 'analysis'
   const [selectedContact, setSelectedContact] = useState(null);
+  const [transactionDetails, setTransactionDetails] = useState(null);
 
   useEffect(() => {
     // Aggressive mobile fullscreen setup
@@ -166,6 +171,11 @@ function App() {
     setCurrentPage('paymentpage');
   };
 
+  const handlePaymentSuccess = (details) => {
+    setTransactionDetails(details);
+    setCurrentPage('paymentsuccess');
+  };
+
   return (
     <div className="App">
       {!isFullscreen && (
@@ -247,7 +257,11 @@ function App() {
       {currentPage === 'otherpurchases' && <OtherPurchases onBack={() => setCurrentPage('dashboard')} />}
       {currentPage === 'miscellaneous' && <Miscellaneous onBack={() => setCurrentPage('dashboard')} />}
       {currentPage === 'paytocontacts' && <PayToContacts onBack={() => setCurrentPage('dashboard')} onContactSelect={handleContactSelect} />}
-      {currentPage === 'paymentpage' && <PaymentPage contact={selectedContact} onBack={() => setCurrentPage('paytocontacts')} />}
+      {currentPage === 'paymentpage' && <PaymentPage contact={selectedContact} onBack={() => setCurrentPage('paytocontacts')} onPaymentSuccess={handlePaymentSuccess} />}
+      {currentPage === 'paymentsuccess' && <PaymentSuccess transactionDetails={transactionDetails} onDone={() => setCurrentPage('dashboard')} />}
+      {currentPage === 'analysis' && <Analysis onNavigate={setCurrentPage} onBack={() => setCurrentPage('dashboard')} />}
+      {currentPage === 'rewards' && <Rewards onNavigate={setCurrentPage} />}
+      {currentPage === 'profile' && <Profile onNavigate={setCurrentPage} />}
     </div>
   );
 }

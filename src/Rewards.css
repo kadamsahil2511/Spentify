@@ -1,0 +1,228 @@
+.rewards-container {
+  background: var(--background-color);
+  background-image: 
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: 0 0, 0 0;
+  color: #ffffff;
+  padding: 20px;
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.rewards-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 0 10px;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+.rewards-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.rewards-content {
+  overflow-y: auto;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.rewards-content::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
+}
+
+
+.points-summary-card {
+  background-color: #1a1a1a;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+  border: 1px solid #333;
+}
+
+.available-points-label {
+  color: #a0a0a0;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.points-balance {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.tier-status {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.tier-progress {
+  background-color: #333;
+  border-radius: 8px;
+  height: 8px;
+  margin-bottom: 5px;
+  overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+}
+
+.progress {
+  background-color: white;
+  height: 100%;
+  border-radius: 8px;
+}
+
+.points-to-next-tier {
+  color: #a0a0a0;
+  font-size: 12px;
+}
+
+.rewards-filters {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.filter-button {
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  padding: 10px 20px;
+  font-size: 14px;
+}
+
+.filter-button.active {
+  background-color: white;
+  border-color: white;
+  color: black;
+}
+
+.limited-time-offer {
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.limited-time-offer h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.limited-time-offer p {
+  color: #a0a0a0;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.offer-expiry {
+  font-size: 12px;
+  color: #a0a0a0;
+}
+
+.rewards-section {
+  margin-bottom: 20px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.section-header h2 {
+  font-size: 20px;
+}
+
+.view-all-button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.rewards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 15px;
+}
+
+.reward-card {
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.reward-image {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
+
+.reward-info {
+  padding: 15px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.reward-info h3 {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.reward-info p {
+  color: #a0a0a0;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.reward-action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.reward-action span {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.redeem-button {
+  background-color: white;
+  border: none;
+  border-radius: 20px;
+  color: black;
+  cursor: pointer;
+  padding: 8px 16px;
+  font-size: 12px;
+}

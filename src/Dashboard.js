@@ -43,6 +43,12 @@ function Dashboard({ onNavigate }) {
   const handleOptionClick = (optionId) => {
     if (optionId === 'contacts') {
       onNavigate('paytocontacts');
+    } else if (optionId === 'activity') {
+      onNavigate('analysis');
+    } else if (optionId === 'rewards') {
+      onNavigate('rewards');
+    } else if (optionId === 'profile') {
+      onNavigate('profile');
     }
     // Handle other option selection logic here
   };
@@ -53,7 +59,8 @@ function Dashboard({ onNavigate }) {
 
   const bottomNavItems = [
     { id: 'home', icon: '/Img-assets/navbar icons/home2.svg', label: 'Home', active: true },
-    { id: 'activity', icon: '/Img-assets/navbar icons/activity.svg', label: 'Activity' },
+    { id: 'activity', icon: '/Img-assets/navbar icons/activity.svg', label: 'Analysis' },
+    { id: 'rewards', icon: '/Img-assets/navbar icons/iconsax-enhance-prize.svg', label: 'Rewards' },
     { id: 'profile', icon: '/Img-assets/navbar icons/profile.svg', label: 'Profile' }
   ];
 
