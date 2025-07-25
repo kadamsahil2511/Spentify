@@ -6,13 +6,9 @@ function SignIn({ onBack, onCreateAccount }) {
   const [password, setPassword] = useState('');
 
   const handleGoogleSignIn = () => {
-    console.log('Continue with Gmail clicked!');
-    // Add Google OAuth logic here
-  };
-
-  const handleSignIn = (e) => {
+    // Handle Gmail authentication logic here
+  };  const handleSignIn = (e) => {
     e.preventDefault();
-    console.log('Sign In clicked!', { email, password });
     // Add sign-in logic here
   };
 

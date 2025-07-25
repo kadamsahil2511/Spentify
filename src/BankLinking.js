@@ -16,7 +16,7 @@ function BankLinking({ onBack, onProceed }) {
 
   const handleProceed = () => {
     if (selectedBank && onProceed) {
-      console.log('Selected bank:', selectedBank);
+      // Handle bank selection logic here
       onProceed();
     }
   };

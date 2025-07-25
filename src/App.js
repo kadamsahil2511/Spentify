@@ -4,12 +4,20 @@ import SignIn from './SignIn';
 import PhoneNumber from './PhoneNumber';
 import CreateAccount from './CreateAccount';
 import BankLinking from './BankLinking';
+import FoodExpenses from './FoodExpenses';
+import TravelExpenses from './TravelExpenses';
+import Subscriptions from './Subscriptions';
+import MobileBills from './MobileBills';
+import OtherPurchases from './OtherPurchases';
+import Miscellaneous from './Miscellaneous';
+import PayToContacts from './PayToContacts';
 import PaymentPage from './PaymentPage';
 import Dashboard from './Dashboard';
 
 function App() {
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [currentPage, setCurrentPage] = useState('welcome'); // 'welcome', 'signin', 'phonenumber', 'createaccount', 'banklinking', 'payment', 'dashboard'
+  const [currentPage, setCurrentPage] = useState('welcome'); // 'welcome', 'signin', 'phonenumber', 'createaccount', 'banklinking', 'dashboard', 'foodexpenses', 'travelexpenses', 'subscriptions', 'mobilebills', 'otherpurchases', 'miscellaneous', 'paytocontacts', 'paymentpage'
+  const [selectedContact, setSelectedContact] = useState(null);
 
   useEffect(() => {
     // Aggressive mobile fullscreen setup
@@ -153,8 +161,9 @@ function App() {
     setCurrentPage('dashboard');
   };
 
-  const handleBackToBankLinking = () => {
-    setCurrentPage('banklinking');
+  const handleContactSelect = (contact) => {
+    setSelectedContact(contact);
+    setCurrentPage('paymentpage');
   };
 
   return (
@@ -225,8 +234,20 @@ function App() {
       )}
 
       {currentPage === 'dashboard' && (
-        <Dashboard onBack={handleBackToBankLinking} />
+        <Dashboard onNavigate={setCurrentPage} />
       )}
+
+      {currentPage === 'foodexpenses' && (
+        <FoodExpenses onBack={() => setCurrentPage('dashboard')} />
+      )}
+
+      {currentPage === 'travelexpenses' && <TravelExpenses onBack={() => setCurrentPage('dashboard')} />}
+      {currentPage === 'subscriptions' && <Subscriptions onBack={() => setCurrentPage('dashboard')} />}
+      {currentPage === 'mobilebills' && <MobileBills onBack={() => setCurrentPage('dashboard')} />}
+      {currentPage === 'otherpurchases' && <OtherPurchases onBack={() => setCurrentPage('dashboard')} />}
+      {currentPage === 'miscellaneous' && <Miscellaneous onBack={() => setCurrentPage('dashboard')} />}
+      {currentPage === 'paytocontacts' && <PayToContacts onBack={() => setCurrentPage('dashboard')} onContactSelect={handleContactSelect} />}
+      {currentPage === 'paymentpage' && <PaymentPage contact={selectedContact} onBack={() => setCurrentPage('paytocontacts')} />}
     </div>
   );
 }

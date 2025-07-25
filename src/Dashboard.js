@@ -1,7 +1,7 @@
 import './Dashboard.css';
 import { useState } from 'react';
 
-function Dashboard({ onBack }) {
+function Dashboard({ onNavigate }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [isCardFlipped, setIsCardFlipped] = useState(false);
 
@@ -11,8 +11,7 @@ function Dashboard({ onBack }) {
     balance: 1050000,
     cardNumber: '5671 2345 8900 1024',
     cardExpiry: '10/26',
-    cvv: '234',
-    bankName: 'Spentify Bank'
+    cvv: '234'
   };
 
   const payAndReceiveOptions = [
@@ -38,11 +37,14 @@ function Dashboard({ onBack }) {
   };
 
   const handleNotificationClick = () => {
-    console.log('Notifications clicked');
+    // Handle notification logic here
   };
 
   const handleOptionClick = (optionId) => {
-    console.log('Option clicked:', optionId);
+    if (optionId === 'contacts') {
+      onNavigate('paytocontacts');
+    }
+    // Handle other option selection logic here
   };
 
   const handleCardFlip = () => {
@@ -52,7 +54,6 @@ function Dashboard({ onBack }) {
   const bottomNavItems = [
     { id: 'home', icon: '/Img-assets/navbar icons/home2.svg', label: 'Home', active: true },
     { id: 'activity', icon: '/Img-assets/navbar icons/activity.svg', label: 'Activity' },
-    { id: 'chat', icon: '/Img-assets/navbar icons/messagetext1.svg', label: 'Chat' },
     { id: 'profile', icon: '/Img-assets/navbar icons/profile.svg', label: 'Profile' }
   ];
 
@@ -170,7 +171,23 @@ function Dashboard({ onBack }) {
             <button
               key={category.id}
               className="category-item"
-              onClick={() => handleOptionClick(category.id)}
+              onClick={() => {
+                if (category.id === 'food') {
+                  onNavigate('foodexpenses');
+                } else if (category.id === 'travel') {
+                  onNavigate('travelexpenses');
+                } else if (category.id === 'subscriptions') {
+                  onNavigate('subscriptions');
+                } else if (category.id === 'mobile-bills') {
+                  onNavigate('mobilebills');
+                } else if (category.id === 'purchases') {
+                  onNavigate('otherpurchases');
+                } else if (category.id === 'misc') {
+                  onNavigate('miscellaneous');
+                } else {
+                  handleOptionClick(category.id);
+                }
+              }}
             >
               <img src={category.icon} alt={category.label} className="category-icon" />
               <span className="category-label">{category.label}</span>

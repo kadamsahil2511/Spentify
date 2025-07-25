@@ -28,7 +28,7 @@ function CreateAccount({ onBack, onProceed }) {
   const handleProceed = () => {
     const otpCode = otp.join('');
     if (otpCode.length === 4) {
-      console.log('OTP submitted:', otpCode);
+      // Handle OTP validation logic here
       onProceed();
     }
   };

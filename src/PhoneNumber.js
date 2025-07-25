@@ -14,7 +14,7 @@ function PhoneNumber({ onBack, onProceed }) {
 
   const handleProceed = () => {
     if (phoneNumber.length === 10) {
-      console.log('Phone number entered:', '+91 ' + phoneNumber);
+      // Handle phone number validation logic here
       onProceed();
     }
   };
